@@ -1,0 +1,5 @@
+{
+  "name": "IoT Distance Monitor",
+  "description": "A real-time dashboard to monitor distance measurements from an IoT device using Angular and Supabase. It displays the latest reading and a history of measurements, with visual alerts for proximity.",
+  "requestFramePermissions": []
+}
