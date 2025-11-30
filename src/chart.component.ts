@@ -129,7 +129,8 @@ export class ChartComponent implements OnChanges {
         .attr("cy", (d: MedicionDistancia) => y(d.datos_sensor.distancia_cm))
         .style("fill", (d: MedicionDistancia) => {
             const dist = d.datos_sensor.distancia_cm;
-            if (dist > 25) return "#ef4444"; // red
+            if (dist >= 30) return "#ef4444"; // red
+            if (dist >= 26) return "#3b82f6"; // blue
             if (dist >= 16) return "#eab308"; // yellow
             return "#22c55e"; // green
         })
@@ -156,11 +157,34 @@ export class ChartComponent implements OnChanges {
           .style('fill', '#eab308')
           .style('font-size', '10px')
           .style('font-weight', 'bold')
-          .text('Warning Threshold');
+          .text('Warning Threshold (15cm)');
+    }
+
+    // Observe Threshold Line
+    const observeThreshold = 25;
+    if ((y.domain()[1] || 0) > observeThreshold) {
+        this.svg.append('line')
+          .attr('x1', 0)
+          .attr('y1', y(observeThreshold))
+          .attr('x2', width)
+          .attr('y2', y(observeThreshold))
+          .attr('stroke', '#3b82f6') // blue
+          .attr('stroke-width', 1.5)
+          .attr('stroke-dasharray', '5,5')
+          .style('opacity', 0.8);
+
+        this.svg.append('text')
+          .attr('x', width - 5)
+          .attr('y', y(observeThreshold) - 5)
+          .attr('text-anchor', 'end')
+          .style('fill', '#3b82f6')
+          .style('font-size', '10px')
+          .style('font-weight', 'bold')
+          .text('Observe Threshold (25cm)');
     }
 
     // Alert Threshold Line
-    const alertThreshold = 25;
+    const alertThreshold = 30;
     if ((y.domain()[1] || 0) > alertThreshold) {
         this.svg.append('line')
           .attr('x1', 0)
@@ -179,7 +203,7 @@ export class ChartComponent implements OnChanges {
           .style('fill', '#ef4444')
           .style('font-size', '10px')
           .style('font-weight', 'bold')
-          .text('Alert Threshold');
+          .text('Alert Threshold (30cm)');
     }
   }
 }

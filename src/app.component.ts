@@ -59,13 +59,16 @@ export class AppComponent implements OnInit, OnDestroy {
     if (distancia === undefined) {
         return { text: 'Unknown', cardClass: 'bg-gray-800', textColorClass: 'text-gray-400', pillClass: 'bg-gray-700', level: 'unknown' };
     }
-    if (distancia > 25) { // Red
+    if (distancia >= 30) { // Red: 30+
         return { text: 'Alert', cardClass: 'bg-red-600', textColorClass: 'text-red-100', pillClass: 'bg-red-900/50', level: 'alert' };
     }
-    if (distancia >= 16) { // Yellow
+    if (distancia >= 26) { // Blue (Observe): 26-29
+        return { text: 'Observe', cardClass: 'bg-blue-600', textColorClass: 'text-blue-100', pillClass: 'bg-blue-900/50', level: 'observe' };
+    }
+    if (distancia >= 16) { // Yellow: 16-25
         return { text: 'Warning', cardClass: 'bg-yellow-500', textColorClass: 'text-yellow-100', pillClass: 'bg-yellow-900/50', level: 'warning' };
     }
-    // Green
+    // Green: 0-15
     return { text: 'Safe', cardClass: 'bg-green-600', textColorClass: 'text-green-100', pillClass: 'bg-green-900/50', level: 'safe' };
   }
 
