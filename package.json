@@ -2,16 +2,18 @@
   "name": "iot-distance-monitor",
   "version": "0.0.0",
   "private": true,
-  "dependencies": {},
-  "devDependencies": {
-    "@angular/build": "^21.0.1",
-    "@angular/common": "^21.0.1",
-    "@angular/compiler": "^21.0.1",
-    "@angular/core": "^21.0.1",
-    "@angular/platform-browser": "^21.0.1",
+  "dependencies": {
+    "@angular/common": "~18.1.0",
+    "@angular/compiler": "~18.1.0",
+    "@angular/core": "~18.1.0",
+    "@angular/platform-browser": "~18.1.0",
     "@supabase/supabase-js": "^2.86.0",
     "d3": "^7.9.0",
     "rxjs": "^7.8.2",
-    "typescript": "~5.9.4"
+    "typescript": "~5.5.2"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": "20.x"
   }
 }
